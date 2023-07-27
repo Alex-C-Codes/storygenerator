@@ -3,10 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const app = express();
-// const PORT = 5001; // You can change the port if needed
-const PORT = process.env.PORT || 5000;
 
+const app = express();
+const PORT = process.env.PORT || 5001;
+const cors = require('cors'); // Import the cors package
+
+
+// Use cors middleware to allow requests from all origins
 app.use(cors());
 app.use(bodyParser.json());
 
