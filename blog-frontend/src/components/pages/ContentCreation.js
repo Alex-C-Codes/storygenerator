@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../../config';
 
 export default function Blog() {
 
@@ -13,7 +14,7 @@ export default function Blog() {
   
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/blogs');
+        const response = await axios.get(`${API_BASE_URL}/api/blogs`);
         setBlogs(response.data);
       } catch (err) {
         console.error(err);
@@ -23,7 +24,7 @@ export default function Blog() {
     const handleCreateBlog = async () => {
       try {
         const currentDate = new Date();
-        const response = await axios.post('http://localhost:5001/api/blogs', { title, content, date: currentDate });
+        const response = await axios.post(`${API_BASE_URL}/api/blogs`, { title, content, date: currentDate });
         setBlogs([...blogs, response.data]);
         setTitle('');
         setContent('');
